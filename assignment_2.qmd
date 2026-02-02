@@ -85,7 +85,32 @@ Write a second version of `pos_na()` that performs the same task **without** usi
 
 -   You may use any other valid R mechanism (e.g., `stop()`, `stopifnot()`, or logical short‑circuiting) to handle the case where the vectors differ in length.
 
-```{}
+```{R}
+pos_na <- function(vec1, vec2) {
+  stopifnot(length(vec1) == length(vec2))
+  which(is.na(vec1) & is.na(vec2))
+}
+
+t11 <- c(1, NA, 2)
+t12 <- c(NA, NA)
+
+t21 <- c(NA, NA, 2) 
+t22 <- c(NA, NA, 2)
+
+t31 <- c(NA, 5, NA) 
+t32 <- c(NA, NA, NA)
+
+t41 <- c(NA, NA, NA, 2, NA, 4, NA) 
+t42 <- c(NA, NA, 2, 4, 4, NA, NA)
+
+t51 <- c(1, NA, NA, 2, NA, 4, NA) 
+t52 <- c(NA, -5, 2, 4, 4, NA, 11)
+
+pos_na(t11, t12)
+pos_na(t21, t22)
+pos_na(t31, t32)
+pos_na(t41, t42)
+pos_na(t51, t52)
 ```
 
 # Question 2
