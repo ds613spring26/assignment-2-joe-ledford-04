@@ -190,6 +190,11 @@ V[V %in% c("Bears", "Dolphins", "Bengals")]
 
 ### (d) Attempting to subset by names
 
+```{R}
+V[c("Bears", "Dolphins", "Bengals")]
+# There is no names representing the teams, therefore it is not possible to subset by names in just one line.
+```
+
 # Question 4:
 
 You are given a character vector containing messy employee records. Each entry includes:
