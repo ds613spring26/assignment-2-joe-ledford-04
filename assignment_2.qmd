@@ -250,6 +250,10 @@ print(as.factor(cleaned_records$dept))
 
 1.  **Construct a clean data frame** containing the parsed and converted variables.
 
-2.  **Add a new variable** called `years_worked` that reports the number of full years each employee has worked as of today.
+```{R}
+as.data.frame(cleaned_records)
+```
 
-3.  **Return the final cleaned data frame.**
+1.  **Add a new variable** called `years_worked` that reports the number of full years each employee has worked as of today.
+
+2.  **Return the final cleaned data frame.**
