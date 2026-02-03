@@ -241,8 +241,15 @@ cleaned_records %>%
 1.  **Convert `dept` into an ordered factor** with the levels:\
     `HR`, `FIN`, `IT`, `MKT`.
 
-2.  **Construct a clean data frame** containing the parsed and converted variables.
+```{R}
+depts <- c(" HR", " FIN", " IT", " MKT")
+cleaned_records %>%
+  mutate(dept = factor(dept, levels = depts))
+print(as.factor(cleaned_records$dept))
+```
 
-3.  **Add a new variable** called `years_worked` that reports the number of full years each employee has worked as of today.
+1.  **Construct a clean data frame** containing the parsed and converted variables.
 
-4.  **Return the final cleaned data frame.**
+2.  **Add a new variable** called `years_worked` that reports the number of full years each employee has worked as of today.
+
+3.  **Return the final cleaned data frame.**
