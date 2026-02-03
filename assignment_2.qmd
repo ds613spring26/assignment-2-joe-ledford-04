@@ -260,11 +260,15 @@ cleaned_records
 1.  **Add a new variable** called `years_worked` that reports the number of full years each employee has worked as of today.
 
 ```{R}
-cleaend_records <- cleaned_records %>%
+cleaned_records <- cleaned_records %>%
   mutate(years_worked = floor(
     time_length(interval(hire_date, today()), "years")
   ))
-cleaend_records
+cleaned_records
 ```
 
 1.  **Return the final cleaned data frame.**
+
+```{R}
+cleaned_records
+```
