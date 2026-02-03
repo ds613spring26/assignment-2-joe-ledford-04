@@ -230,12 +230,13 @@ cleaned_records
 1.  **Convert `hire_date` into a proper `Date` object**, correctly handling all of the different date formats.
 
 ```{R}
-cleaned_records %>%
+cleaned_records <- cleaned_records %>%
   mutate(hire_date = parse_date_time(
     hire_date, 
     orders = c("ymd", "dmy", "mdy", "B d, Y")
     )
 )
+cleaned_records
 ```
 
 1.  **Convert `dept` into an ordered factor** with the levels:\
@@ -243,17 +244,27 @@ cleaned_records %>%
 
 ```{R}
 depts <- c(" HR", " FIN", " IT", " MKT")
-cleaned_records %>%
+cleaned_records <- cleaned_records %>%
   mutate(dept = factor(dept, levels = depts))
 print(as.factor(cleaned_records$dept))
+cleaned_records
 ```
 
 1.  **Construct a clean data frame** containing the parsed and converted variables.
 
 ```{R}
-as.data.frame(cleaned_records)
+cleaned_records <- as.data.frame(cleaned_records)
+cleaned_records
 ```
 
 1.  **Add a new variable** called `years_worked` that reports the number of full years each employee has worked as of today.
 
-2.  **Return the final cleaned data frame.**
+```{R}
+cleaend_records <- cleaned_records %>%
+  mutate(years_worked = floor(
+    time_length(interval(hire_date, today()), "years")
+  ))
+cleaend_records
+```
+
+1.  **Return the final cleaned data frame.**
