@@ -172,6 +172,10 @@ for (team in V) {
 
 ### (a) Using positive indices
 
+```{R}
+V[c(1,3,5)]
+```
+
 ### (b) Using negative indices
 
 ### (c) Using logical indexing
