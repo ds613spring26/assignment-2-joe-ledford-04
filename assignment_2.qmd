@@ -184,6 +184,10 @@ V[-c(2, 4, 6)]
 
 ### (c) Using logical indexing
 
+```{R}
+V[V %in% c("Bears", "Dolphins", "Bengals")]
+```
+
 ### (d) Attempting to subset by names
 
 # Question 4:
