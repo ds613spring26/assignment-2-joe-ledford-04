@@ -17,6 +17,7 @@ ggplot2::theme_set(ggplot2::theme_bw())
 library(tidyverse)
 
 library(lubridate)
+library(stringr)
 ```
 
 # Question 1:
@@ -220,13 +221,19 @@ records
     -   `hire_date`\
     -   `dept`
 
-2.  **Convert `hire_date` into a proper `Date` object**, correctly handling all of the different date formats.
+```{R}
+tibble(record = records) %>%
+  separate(record, into = c("name", "hire_date", "dept"),
+           sep = "\\|")
+```
 
-3.  **Convert `dept` into an ordered factor** with the levels:\
+1.  **Convert `hire_date` into a proper `Date` object**, correctly handling all of the different date formats.
+
+2.  **Convert `dept` into an ordered factor** with the levels:\
     `HR`, `FIN`, `IT`, `MKT`.
 
-4.  **Construct a clean data frame** containing the parsed and converted variables.
+3.  **Construct a clean data frame** containing the parsed and converted variables.
 
-5.  **Add a new variable** called `years_worked` that reports the number of full years each employee has worked as of today.
+4.  **Add a new variable** called `years_worked` that reports the number of full years each employee has worked as of today.
 
-6.  **Return the final cleaned data frame.**
+5.  **Return the final cleaned data frame.**
