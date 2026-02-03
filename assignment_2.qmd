@@ -159,6 +159,15 @@ V[5]
 
 ## (3ii) Subsetting using a `for` loop
 
+```{R}
+special_teams <- c("Bears", "Dolphins", "Bengals")
+for (team in V) {
+  if (team %in% special_teams) {
+    print(team)
+  }
+}
+```
+
 ## (3iii)Returning all values in a single vector (one line of code)
 
 ### (a) Using positive indices
