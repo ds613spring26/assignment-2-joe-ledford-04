@@ -178,6 +178,10 @@ V[c(1,3,5)]
 
 ### (b) Using negative indices
 
+```{R}
+V[-c(2, 4, 6)]
+```
+
 ### (c) Using logical indexing
 
 ### (d) Attempting to subset by names
