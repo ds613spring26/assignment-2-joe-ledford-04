@@ -151,6 +151,12 @@ V <- c("Bears", "Lions", "Dolphins", "Eagles", "Bengals")
 
 ## (3i) Subsetting by index
 
+```{R}
+V[1]
+V[3]
+V[5]
+```
+
 ## (3ii) Subsetting using a `for` loop
 
 ## (3iii)Returning all values in a single vector (one line of code)
