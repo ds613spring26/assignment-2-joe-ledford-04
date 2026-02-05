@@ -1,5 +1,5 @@
 ---
-title: "assignment_2"
+title: "hw02_ledford"
 format: html
 editor: visual
 ---
@@ -106,7 +106,7 @@ t42 <- c(NA, NA, 2, 4, 4, NA, NA)
 t51 <- c(1, NA, NA, 2, NA, 4, NA) 
 t52 <- c(NA, -5, 2, 4, 4, NA, 11)
 
-pos_na(t11, t12)
+#pos_na(t11, t12) (commented out as this line results in an error due to the logic of the stopifnot)
 pos_na(t21, t22)
 pos_na(t31, t32)
 pos_na(t41, t42)
