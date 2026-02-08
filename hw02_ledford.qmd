@@ -118,26 +118,32 @@ pos_na(t51, t52)
 Load the `wmata_ridership` data frame into R from <https://dcgerard.github.io/stat_412_612/data/wmata_ridership.csv>. For each month, calculate the proportion of rides made on a given day of the month. Then make box plots of the proport
 
 ```{R}
-wmata_ridership <- read_csv('https://dcgerard.github.io/stat_412_612/data/wmata_ridership.csv')
-wmata_ridership$Date <- as.Date(wmata_ridership$Date)
-wmata_ridership$month <- format(wmata_ridership$Date, "%m")
-wmata_ridership$day <- format(wmata_ridership$Date, "%d")
-head(wmata_ridership)
+wmata_ridership <- read_csv(
+  "https://dcgerard.github.io/stat_412_612/data/wmata_ridership.csv"
+) %>%
+  mutate(
+    Date = as.Date(Date),
+    year = format(Date, "%Y"),
+    month = format(Date, "%m"),
+    day = format(Date, "%d"),
+    dow = weekdays(Date)
+  ) %>%
+  filter(!(year %in% c("2004", "2005")))
 
 monthly_counts <- wmata_ridership %>%
-  group_by(month) %>%
-  summarise(total_rides_per_month = sum(Total))
+  group_by(year, month) %>%
+  summarise(total_rides_per_month = sum(Total), .groups = "drop")
 
 props_daily <- wmata_ridership %>%
-  left_join(monthly_counts, by = "month") %>%
+  left_join(monthly_counts, by = c("year", "month")) %>%
   mutate(prop = Total / total_rides_per_month)
 
-print(props_daily, n = 50)
+#print(props_daily, n = 10)
 
 ```
 
 ```{R}
-ggplot(props_daily, aes(x = factor(month), y = prop)) +
+ggplot(props_daily, aes(x = dow, y = prop)) +
   geom_boxplot() 
 ```
 
